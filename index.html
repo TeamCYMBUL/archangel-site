@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archangel Executive Solutions</title>
+<meta name="description" content="Archangel Executive Solutions provides executive protection, travel security, event and facility security for corporations, families and high-profile individuals.">
+<link rel="icon" href="assets/logomark-teal.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Le Jour Serif is the brand primary font (commercial license). Cormorant Garamond stands in until a webfont license is purchased. -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/clear-sans@5/400.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/clear-sans@5/500.css" rel="stylesheet">
+<style>
+  :root {
+    --teal: #083335;
+    --teal-2: #0d4447;
+    --cream: #f0f1ec;
+    --cream-2: #e4e6de;
+    --ink: #0b1f20;
+    --muted: #5b6b6a;
+    --line: rgba(8, 51, 53, .16);
+    --line-dark: rgba(240, 241, 236, .18);
+    --serif: "Le Jour Serif", "Cormorant Garamond", Georgia, serif;
+    --sans: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    --wrap: 1160px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+  .eyebrow { font-size: 12px; letter-spacing: .22em; text-transform: uppercase; font-weight: 500; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.1; margin: 0; }
+
+  /* Nav */
+  header { position: absolute; inset: 0 0 auto 0; z-index: 10; }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 84px; }
+  .nav img { height: 34px; width: auto; }
+  .nav ul { display: flex; gap: 36px; list-style: none; margin: 0; padding: 0; }
+  .nav a { text-decoration: none; color: var(--cream); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; opacity: .85; }
+  .nav a:hover { opacity: 1; }
+  .nav .cta { border: 1px solid var(--line-dark); padding: 10px 18px; opacity: 1; }
+  .nav .cta:hover { background: var(--cream); color: var(--teal); }
+
+  /* Hero */
+  .hero { background: var(--teal); color: var(--cream); min-height: 92vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+  .hero::after { content: ""; position: absolute; right: -8%; top: 50%; transform: translateY(-50%); width: 62vw; max-width: 820px; aspect-ratio: 540 / 655; background: url(assets/logomark-cream.svg) no-repeat center / contain; opacity: .035; pointer-events: none; }
+  .hero .wrap { position: relative; z-index: 1; padding-top: 120px; padding-bottom: 96px; }
+  .hero-logo { width: min(560px, 88%); height: auto; margin-bottom: 56px; }
+  .hero h1 { font-size: clamp(34px, 4.6vw, 58px); max-width: 16ch; }
+  .hero p { max-width: 52ch; color: rgba(240, 241, 236, .78); margin: 24px 0 40px; font-size: 18px; }
+  .btn { display: inline-block; text-decoration: none; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; padding: 16px 28px; border: 1px solid currentColor; transition: background .2s, color .2s; }
+  .btn-light { background: var(--cream); color: var(--teal); border-color: var(--cream); }
+  .btn-light:hover { background: transparent; color: var(--cream); }
+  .btn-ghost { color: var(--cream); margin-left: 12px; border-color: var(--line-dark); }
+  .btn-ghost:hover { border-color: var(--cream); }
+  .btn-dark { background: var(--teal); color: var(--cream); border-color: var(--teal); }
+  .btn-dark:hover { background: transparent; color: var(--teal); }
+
+  /* Sections */
+  section { padding: 120px 0; }
+  .section-head { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: end; margin-bottom: 64px; }
+  .section-head h2 { font-size: clamp(32px, 3.6vw, 48px); }
+  .section-head p { color: var(--muted); margin: 0; max-width: 56ch; }
+  .eyebrow.teal { color: var(--teal); display: block; margin-bottom: 18px; }
+
+  /* Services */
+  .services { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+  .service { padding: 40px 32px 44px 0; border-bottom: 1px solid var(--line); }
+  .service:not(:nth-child(3n+1)) { padding-left: 32px; border-left: 1px solid var(--line); }
+  .service .num { font-family: var(--serif); font-size: 18px; color: var(--teal); opacity: .6; }
+  .service h3 { font-size: 27px; margin: 14px 0 12px; color: var(--teal); }
+  .service p { margin: 0; color: var(--muted); font-size: 16px; }
+
+  /* Approach (dark band) */
+  .approach { background: var(--teal); color: var(--cream); }
+  .approach .section-head p { color: rgba(240, 241, 236, .7); }
+  .approach .eyebrow.teal { color: rgba(240, 241, 236, .6); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line-dark); }
+  .step { padding: 36px 28px 0 0; }
+  .step + .step { padding-left: 28px; border-left: 1px solid var(--line-dark); }
+  .step .k { font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: rgba(240, 241, 236, .55); }
+  .step h3 { font-size: 26px; margin: 12px 0 10px; }
+  .step p { margin: 0; font-size: 15.5px; color: rgba(240, 241, 236, .72); }
+
+  /* Clients */
+  .clients { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .client { background: var(--cream); padding: 32px 26px; }
+  .client h3 { font-size: 23px; color: var(--teal); margin-bottom: 8px; }
+  .client p { margin: 0; font-size: 15px; color: var(--muted); }
+
+  /* Principles */
+  .principles { background: var(--cream-2); }
+  .quote { font-family: var(--serif); font-size: clamp(28px, 3.4vw, 44px); line-height: 1.2; color: var(--teal); max-width: 26ch; margin: 0; }
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 72px; }
+  .pillars h3 { font-size: 24px; color: var(--teal); margin-bottom: 10px; }
+  .pillars p { margin: 0; color: var(--muted); font-size: 16px; }
+
+  /* Contact */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; }
+  .contact-grid h2 { font-size: clamp(34px, 4vw, 52px); color: var(--teal); }
+  .contact-grid .lead { color: var(--muted); margin: 20px 0 32px; max-width: 44ch; }
+  .contact-meta { border-top: 1px solid var(--line); padding-top: 24px; font-size: 15px; color: var(--muted); }
+  .contact-meta strong { display: block; color: var(--teal); font-weight: 500; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 4px; }
+  form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  form .full { grid-column: 1 / -1; }
+  label { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--teal); display: block; margin-bottom: 6px; }
+  input, select, textarea { width: 100%; font: inherit; font-size: 16px; color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid rgba(8, 51, 53, .35); padding: 10px 0; border-radius: 0; outline: none; }
+  input:focus, select:focus, textarea:focus { border-bottom-color: var(--teal); }
+  textarea { min-height: 110px; resize: vertical; }
+  .form-note { font-size: 13px; color: var(--muted); margin: 0; }
+  .form-status { font-size: 14px; color: var(--teal); margin: 0; min-height: 1em; }
+
+  /* Footer */
+  footer { background: var(--teal); color: rgba(240, 241, 236, .7); padding: 64px 0 40px; font-size: 14px; }
+  .foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; }
+  .foot img { height: 64px; width: auto; }
+  .foot-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line-dark); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12.5px; letter-spacing: .06em; }
+
+  @media (max-width: 900px) {
+    .nav ul li:not(:last-child) { display: none; }
+    .section-head, .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+    .services { grid-template-columns: 1fr; }
+    .service, .service:not(:nth-child(3n+1)) { padding: 32px 0; border-left: 0; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .step, .step + .step { padding: 32px 20px 32px 0; border-left: 0; border-bottom: 1px solid var(--line-dark); }
+    .clients { grid-template-columns: 1fr 1fr; }
+    .pillars { grid-template-columns: 1fr; gap: 32px; }
+    section { padding: 88px 0; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 16px; }
+    .steps, .clients { grid-template-columns: 1fr; }
+    form { grid-template-columns: 1fr; }
+    .btn-ghost { margin: 12px 0 0; }
+    .hero-logo { margin-bottom: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap nav" aria-label="Primary">
+    <a href="#top" aria-label="Archangel Executive Solutions home"><img src="assets/logomark-cream.svg" alt="Archangel"></a>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#clients">Who We Serve</a></li>
+      <li><a class="cta" href="#contact">Request a Consultation</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <img class="hero-logo" src="assets/logo-full-cream.svg" alt="Archangel Executive Solutions">
+      <h1>Discreet protection for the people and places that matter most.</h1>
+      <p>Archangel Executive Solutions delivers executive protection, secure travel, and event and facility security for corporations, families, and high-profile individuals. Seasoned professionals, planned to the detail, present only as much as the moment requires.</p>
+      <a class="btn btn-light" href="#contact">Request a Consultation</a>
+      <a class="btn btn-ghost" href="#services">Our Services</a>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow teal">Services</span>
+          <h2>Protection built around your principal, not a template.</h2>
+        </div>
+        <p>Every engagement starts with an assessment of the people, places, and exposure involved. From there we build a detail sized to the risk, from a single close protection agent to a coordinated multi-city program.</p>
+      </div>
+      <div class="services">
+        <div class="service"><span class="num">01</span><h3>Executive Protection</h3><p>Close protection for executives, board members, and high-profile individuals, at home, at work, and on the move.</p></div>
+        <div class="service"><span class="num">02</span><h3>Secure Travel &amp; Advance</h3><p>Route planning, advance site surveys, secure ground transportation, and on-the-ground coordination for domestic and international travel.</p></div>
+        <div class="service"><span class="num">03</span><h3>Event Security</h3><p>Security planning and staffing for corporate events, conferences, offsites, shareholder meetings, and private functions.</p></div>
+        <div class="service"><span class="num">04</span><h3>Corporate &amp; Facility Security</h3><p>Uniformed and plainclothes officers, front-of-house presence, and access control for offices, campuses, and sites.</p></div>
+        <div class="service"><span class="num">05</span><h3>Residential &amp; Estate</h3><p>Residential security programs for principals and families, including estate coverage, staff vetting, and household protocols.</p></div>
+        <div class="service"><span class="num">06</span><h3>Risk &amp; Threat Assessment</h3><p>Threat assessments, vulnerability reviews, and security plans that give leadership a clear picture of exposure and options.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="approach" class="approach">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow teal">Approach</span>
+          <h2>Quiet preparation. Decisive execution.</h2>
+        </div>
+        <p>Good protection is mostly invisible. It happens in the planning, the advance work, and the discipline of the team, so that the principal's day runs as intended.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="k">Step 01</span><h3>Assess</h3><p>We learn the principal, the itinerary, and the environment, and identify the real risks.</p></div>
+        <div class="step"><span class="k">Step 02</span><h3>Plan</h3><p>A written security plan with staffing, routes, contingencies, and communications.</p></div>
+        <div class="step"><span class="k">Step 03</span><h3>Protect</h3><p>Vetted, licensed professionals execute the detail with discretion and precision.</p></div>
+        <div class="step"><span class="k">Step 04</span><h3>Review</h3><p>Every engagement closes with a debrief and recommendations for the next one.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="clients">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow teal">Who We Serve</span>
+          <h2>Trusted by organizations that cannot afford a lapse.</h2>
+        </div>
+        <p>We work directly with corporate security, executive offices, family offices, and event teams, as a single accountable partner for the full engagement.</p>
+      </div>
+      <div class="clients">
+        <div class="client"><h3>Corporations</h3><p>Executive teams, boards, and corporate security departments.</p></div>
+        <div class="client"><h3>Family Offices</h3><p>Principals, families, and residential programs.</p></div>
+        <div class="client"><h3>Events &amp; Venues</h3><p>Conferences, summits, launches, and private functions.</p></div>
+        <div class="client"><h3>Public Figures</h3><p>Athletes, entertainers, and high-profile individuals.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="principles">
+    <div class="wrap">
+      <span class="eyebrow teal">Our Standard</span>
+      <p class="quote">A guardian's watch: present when needed, unseen when not.</p>
+      <div class="pillars">
+        <div><h3>Discretion</h3><p>Confidentiality is part of the service. What we see and hear stays with us.</p></div>
+        <div><h3>Professionalism</h3><p>Licensed, vetted, and trained personnel held to a single operating standard.</p></div>
+        <div><h3>Accountability</h3><p>One point of contact, one plan, and clear reporting from first call to final debrief.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="eyebrow teal">Contact</span>
+        <h2>Start a confidential conversation.</h2>
+        <p class="lead">Tell us a little about what you need. A member of our team will respond within one business day.</p>
+        <div class="contact-meta">
+          <strong>Email</strong>
+          <a id="contact-email" href="mailto:info@archangelexecutive.com">info@archangelexecutive.com</a>
+        </div>
+      </div>
+      <form id="inquiry" novalidate>
+        <div><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div><label for="f-org">Organization</label><input id="f-org" name="organization" autocomplete="organization"></div>
+        <div><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="full"><label for="f-svc">Service of interest</label>
+          <select id="f-svc" name="service">
+            <option>Executive Protection</option>
+            <option>Secure Travel &amp; Advance</option>
+            <option>Event Security</option>
+            <option>Corporate &amp; Facility Security</option>
+            <option>Residential &amp; Estate</option>
+            <option>Risk &amp; Threat Assessment</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="full"><label for="f-msg">How can we help?</label><textarea id="f-msg" name="message"></textarea></div>
+        <div class="full"><button class="btn btn-dark" type="submit">Send Inquiry</button></div>
+        <p class="full form-note">Please do not include sensitive itinerary details in this form. We will arrange a secure channel.</p>
+        <p class="full form-status" id="form-status" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <img src="assets/logo-full-cream.svg" alt="Archangel Executive Solutions">
+      <div>Executive Protection &middot; Secure Travel &middot; Event &amp; Facility Security</div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="yr">2026</span> Archangel Executive Solutions LLC. All rights reserved.</span>
+      <span>License numbers available upon request.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  // Placeholder handler: opens the visitor's mail client with the inquiry filled in.
+  // Swap for a form backend (HubSpot form, Formspree, or a CRM endpoint) once email is live.
+  document.getElementById('inquiry').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = e.target, status = document.getElementById('form-status');
+    if (!f.name.value.trim() || !f.email.value.trim()) { status.textContent = 'Please add your name and email.'; return; }
+    var to = document.getElementById('contact-email').textContent;
+    var body = 'Name: ' + f.name.value + '\nOrganization: ' + f.organization.value + '\nEmail: ' + f.email.value +
+      '\nPhone: ' + f.phone.value + '\nService: ' + f.service.value + '\n\n' + f.message.value;
+    window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent('Inquiry: ' + f.service.value) + '&body=' + encodeURIComponent(body);
+    status.textContent = 'Opening your email client to send the inquiry.';
+  });
+</script>
+</body>
+</html>
