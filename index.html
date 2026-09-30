@@ -21,7 +21,7 @@
   .slide[data-img="jet"]   { background-image: url(assets/hero-jet.jpg);   background-position: 40% 60%; }
   .slide[data-img="yacht"] { background-image: url(assets/hero-yacht.jpg); background-position: 50% 55%; }
   .slide[data-img="rangerover"] { background-image: url(assets/hero-rangerover.jpg); background-position: 70% 95%; }
-  .slide[data-img="lake"]  { background-image: url(assets/hero-lake.jpg);  background-position: 50% 45%; }
+  .slide[data-img="villa"] { background-image: url(assets/hero-villa.jpg); background-position: 50% 50%; }
   .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,51,53,0) 30%, rgba(8,51,53,.6) 100%), linear-gradient(90deg, rgba(8,51,53,.5) 0%, rgba(8,51,53,.15) 45%, rgba(8,51,53,0) 70%); pointer-events: none; }
   .hero-copy { position: absolute; z-index: 2; left: 0; right: 0; bottom: clamp(40px, 9vh, 96px); }
   .hero-copy h1 { color: var(--cream); font-size: clamp(32px, 4.4vw, 88px); max-width: 22ch; text-wrap: balance; text-shadow: 0 1px 24px rgba(0,0,0,.18); }
@@ -51,7 +51,7 @@
   <section class="hero" aria-label="Archangel Executive Solutions">
     <div class="slide on" data-img="yacht" role="img" aria-label="Yacht on calm water at dusk"></div>
     <div class="slide" data-img="rangerover" role="img" aria-label="Black Range Rover driving along a beach"></div>
-    <div class="slide" data-img="lake" role="img" aria-label="Mountains reflected in a still lake at sunset"></div>
+    <div class="slide" data-img="villa" role="img" aria-label="Infinity pool overlooking a turquoise sea"></div>
     <div class="slide" data-img="jet" role="img" aria-label="Private jet on the tarmac at golden hour"></div>
     <div class="hero-copy">
       <div class="wrap">
@@ -75,7 +75,7 @@
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     // Preload the rest after first paint so the first image isn't competing for bandwidth.
     window.addEventListener('load', function () {
-      ['rangerover', 'lake', 'jet'].forEach(function (n) { new Image().src = 'assets/hero-' + n + '.jpg'; });
+      ['rangerover', 'villa', 'jet'].forEach(function (n) { new Image().src = 'assets/hero-' + n + '.jpg'; });
     });
     setInterval(function () {
       slides[i].classList.remove('on');
