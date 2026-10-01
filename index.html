@@ -6,7 +6,7 @@
 <title>Archangel Executive Solutions</title>
 <meta name="description" content="Archangel Executive Solutions. Solutions architected to protect your peace of mind.">
 <link rel="icon" href="assets/logomark-teal.svg" type="image/svg+xml">
-<link rel="preload" as="image" href="assets/hero-yacht.jpg">
+<link rel="preload" as="image" href="assets/hero-city-poster.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Le Jour Serif is the brand primary font (commercial license). Cormorant Garamond stands in until a webfont license is purchased. -->
@@ -15,20 +15,12 @@
 <link href="https://cdn.jsdelivr.net/npm/@fontsource/clear-sans@5/500.css" rel="stylesheet">
 <link href="styles.css" rel="stylesheet">
 <style>
-  .hero { position: relative; height: calc(100svh - var(--header-h) - var(--footer-h)); min-height: 300px; overflow: hidden; background: var(--teal); }
-  .slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transform: scale(1.06); transition: opacity 1.8s ease, transform 9s linear; }
-  .slide.on { opacity: 1; transform: scale(1); }
-  .slide[data-img="jet"]   { background-image: url(assets/hero-jet.jpg);   background-position: 40% 60%; }
-  .slide[data-img="yacht"] { background-image: url(assets/hero-yacht.jpg); background-position: 50% 55%; }
-  .slide[data-img="rangerover"] { background-image: url(assets/hero-rangerover.jpg); background-position: 70% 95%; }
-  .slide[data-img="villa"] { background-image: url(assets/hero-villa.jpg); background-position: 50% 50%; }
-  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,51,53,0) 30%, rgba(8,51,53,.6) 100%), linear-gradient(90deg, rgba(8,51,53,.5) 0%, rgba(8,51,53,.15) 45%, rgba(8,51,53,0) 70%); pointer-events: none; }
+  .hero { position: relative; height: calc(100svh - var(--header-h) - var(--footer-h)); min-height: 300px; overflow: hidden; background: #041a1b url(assets/hero-city-poster.jpg) center / cover no-repeat; }
+  .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(4,26,27,.15) 0%, rgba(4,26,27,0) 35%, rgba(4,26,27,.7) 100%), linear-gradient(90deg, rgba(4,26,27,.55) 0%, rgba(4,26,27,.15) 50%, rgba(4,26,27,0) 75%); pointer-events: none; }
   .hero-copy { position: absolute; z-index: 2; left: 0; right: 0; bottom: clamp(40px, 9vh, 96px); }
-  .hero-copy h1 { color: var(--cream); font-size: clamp(32px, 4.4vw, 88px); max-width: 22ch; text-wrap: balance; text-shadow: 0 1px 24px rgba(0,0,0,.18); }
+  .hero-copy h1 { color: var(--cream); font-size: clamp(32px, 4.4vw, 88px); max-width: 22ch; text-wrap: balance; text-shadow: 0 1px 24px rgba(0,0,0,.25); }
   .hero-copy .btn { margin-top: 32px; }
-  @media (max-aspect-ratio: 4/5) {
-    .slide[data-img="rangerover"] { background-image: url(assets/hero-rangerover-m.jpg); background-position: 50% 0%; }
-  }
   @media (max-height: 520px) {
     .hero { min-height: 0; }
     .hero-copy { bottom: 24px; }
@@ -36,23 +28,20 @@
     .hero-copy .btn { margin-top: 16px; }
   }
   @media (max-width: 360px) { .hero-copy h1 { font-size: 29px; } }
-  @media (prefers-reduced-motion: reduce) { .slide { transition: opacity .01s; transform: none; } }
 </style>
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap bar">
-    <a href="/" class="mark" aria-label="Archangel Executive Solutions home"><img src="assets/logomark-teal.svg" alt="Archangel Executive Solutions"></a>
+    <a href="/" class="mark" aria-label="Archangel home"><img src="assets/logo-wordmark-teal.svg" alt="Archangel"></a>
+    <a href="/login" class="login">Client Login</a>
   </div>
 </header>
 
 <main>
   <section class="hero" aria-label="Archangel Executive Solutions">
-    <div class="slide on" data-img="yacht" role="img" aria-label="Yacht on calm water at dusk"></div>
-    <div class="slide" data-img="rangerover" role="img" aria-label="Black Range Rover driving along a beach"></div>
-    <div class="slide" data-img="villa" role="img" aria-label="Infinity pool overlooking a turquoise sea"></div>
-    <div class="slide" data-img="jet" role="img" aria-label="Private jet on the tarmac at golden hour"></div>
+    <video id="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-city-poster.jpg" aria-hidden="true"></video>
     <div class="hero-copy">
       <div class="wrap">
         <h1>Solutions architected to protect your peace of mind.</h1>
@@ -69,19 +58,16 @@
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
   (function () {
-    var slides = document.querySelectorAll('.slide'), i = 0;
-    var forced = new URLSearchParams(location.search).get('slide');
-    if (forced !== null) { slides[0].classList.remove('on'); slides[+forced].classList.add('on'); return; }
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    // Preload the rest after first paint so the first image isn't competing for bandwidth.
-    window.addEventListener('load', function () {
-      ['rangerover', 'villa', 'jet'].forEach(function (n) { new Image().src = 'assets/hero-' + n + '.jpg'; });
-    });
-    setInterval(function () {
-      slides[i].classList.remove('on');
-      i = (i + 1) % slides.length;
-      slides[i].classList.add('on');
-    }, 7000);
+    var v = document.getElementById('hero-video');
+    // Respect reduced-motion: keep the still poster instead of playing the video.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); return; }
+    // Smaller file for phones and small tablets.
+    v.src = 'assets/' + (Math.max(screen.width, screen.height) * (window.devicePixelRatio || 1) < 1800 || window.innerWidth < 900 ? 'hero-city-720.mp4' : 'hero-city.mp4');
+    v.muted = true;
+    function play() { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+    play();
+    // Browsers hold back autoplay in background tabs; start as soon as the page is visible.
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) play(); });
   })();
 </script>
 </body>
