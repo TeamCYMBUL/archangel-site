@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@fontsource/clear-sans@5/400.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@fontsource/clear-sans@5/500.css" rel="stylesheet">
-<link href="styles.css" rel="stylesheet">
+<link href="styles.css?v=3" rel="stylesheet">
 <style>
   .hero { position: relative; height: calc(100svh - var(--header-h) - var(--footer-h)); min-height: 300px; overflow: hidden; background: #041a1b url(assets/hero-city-poster.jpg) center / cover no-repeat; }
   .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -62,8 +62,10 @@
     // Respect reduced-motion: keep the still poster instead of playing the video.
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); return; }
     // Smaller file for phones and small tablets.
-    v.src = 'assets/' + (Math.max(screen.width, screen.height) * (window.devicePixelRatio || 1) < 1800 || window.innerWidth < 900 ? 'hero-city-720.mp4' : 'hero-city.mp4');
+    v.src = 'assets/' + (Math.max(screen.width, screen.height) * (window.devicePixelRatio || 1) < 1800 || window.innerWidth < 900 ? 'hero-reel-720.mp4' : 'hero-reel.mp4');
     v.muted = true;
+    var seek = new URLSearchParams(location.search).get('t'); // QA: ?t=SECONDS freezes the reel at that moment
+    if (seek !== null) { v.removeAttribute('autoplay'); var go = function () { v.currentTime = +seek; }; if (v.readyState >= 1) go(); else v.addEventListener('loadedmetadata', go, { once: true }); return; }
     function play() { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
     play();
     // Browsers hold back autoplay in background tabs; start as soon as the page is visible.
